@@ -1,0 +1,238 @@
+:root {
+    /* Variáveis CSS globais (Custom Properties) */
+    --gold: #379e00; /* Verde claro usado como cor de destaque */
+    --green: #276605; /* Verde escuro para hover */
+    --black: #121212; /* Cor de fundo quase preta */
+    --dark: #1a1a1a; /* Preto levemente mais claro */
+    --gray: #333; /* Cinza para elementos secundários */
+    --light-gray: #ffffff; /* Branco usado para textos claros */
+    --white: #ffffff; /* Branco puro */
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra padrão */
+    --transition: all 0.3s ease; /* Transição suave padrão */
+  }
+  
+  * {
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove espaçamentos internos padrão */
+    box-sizing: border-box; /* Inclui bordas e paddings no cálculo total do tamanho */
+  }
+  
+  html {
+    scroll-behavior: smooth; /* Faz a rolagem ser suave */
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif; /* Fonte principal */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    color: var(--white); /* Cor do texto */
+    background-color: var(--black); /* Cor de fundo da página */
+  }
+  
+  .container {
+    width: 90%; /* Largura máxima de 90% */
+    max-width: 1200px; /* Não ultrapassa 1200px */
+    margin: 0 auto; /* Centraliza no meio */
+    padding: 0 20px; /* Espaçamento lateral interno */
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif; /* Fonte igual ao body */
+    font-weight: 900; /* Negrito forte */
+    line-height: 1.2; /* Espaço menor entre linhas */
+  }
+  
+  a {
+    text-decoration: none; /* Remove sublinhado */
+    color: inherit; /* Usa a cor herdada */
+  }
+  
+  ul {
+    list-style: none; /* Remove marcadores de lista */
+  }
+  
+  img {
+    max-width: 100%; /* Faz a imagem nunca passar da largura do container */
+    height: auto; /* Mantém proporção */
+  }
+  
+  .btn {
+    display: inline-block; /* Botão em linha */
+    background: var(--gold); /* Cor de fundo */
+    color: var(--white); /* Cor do texto */
+    padding: 12px 30px; /* Espaçamento interno */
+    border: none; /* Remove borda padrão */
+    border-radius: 30px; /* Arredonda bordas */
+    font-weight: 700; /* Texto em negrito */
+    font-size: 16px; /* Tamanho da fonte */
+    text-transform: uppercase; /* Letras maiúsculas */
+    cursor: pointer; /* Cursor de clique */
+    transition: var(--transition); /* Transição suave */
+    box-shadow: var(--shadow); /* Sombra */
+  }
+  
+  .btn:hover {
+    background: var(--green); /* Muda cor no hover */
+    transform: translateY(-3px); /* Eleva botão levemente */
+  }
+  
+  .section {
+    padding: 80px 0; /* Espaçamento interno vertical */
+    background-color: var(--black); /* Fundo preto */
+    color: var(--white); /* Texto branco */
+  }
+  
+  .section-dark {
+    background-color: var(--dark); /* Fundo cinza escuro */
+    color: var(--white);
+  }
+  
+  .section-title {
+    font-size: 2.5rem; /* Título grande */
+    text-align: center; /* Centralizado */
+    margin-bottom: 60px; /* Espaço abaixo */
+    position: relative; /* Necessário para ::after */
+    color: inherit; /* Cor herdada */
+  }
+  
+  .section-title::after {
+    /* Linha decorativa abaixo do título */
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: var(--gold);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* ================== HEADER ================== */
+  #header {
+    position: fixed; /* Fixa no topo */
+    width: 100%; /* Ocupa largura total */
+    top: 0; /* Grudado no topo */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo transparente escuro */
+    z-index: 1000; /* Sempre acima dos outros elementos */
+    transition: var(--transition);
+  }
+  
+  #header.scrolled {
+    /* Quando rola a página */
+    padding: 10px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  #header .container {
+    display: flex; /* Coloca elementos lado a lado */
+    justify-content: space-between; /* Espaço entre eles */
+    align-items: center; /* Alinha verticalmente */
+    padding: 20px;
+  }
+  
+  .logo h1 {
+    color: var(--white);
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 1px; /* Espaçamento entre letras */
+  }
+  
+  .logo span {
+    color: var(--gold); /* Parte do texto dourado */
+  }
+  
+  .nav-menu {
+    display: flex; /* Itens na horizontal */
+  }
+  
+  .nav-menu li {
+    margin-left: 30px; /* Espaço entre os links */
+  }
+  
+  .nav-menu a {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
+    transition: var(--transition);
+    position: relative; /* Necessário para linha animada */
+  }
+  
+  .nav-menu a::after {
+    /* Linha animada abaixo do link */
+    content: '';
+    position: absolute;
+    width: 0; /* Começa invisível */
+    height: 2px;
+    background-color: var(--gold);
+    bottom: -5px;
+    left: 0;
+    transition: var(--transition);
+  }
+  
+  .nav-menu a:hover::after,
+  .nav-menu a.active::after {
+    width: 100%; /* Linha aparece no hover */
+  }
+  
+  .menu-toggle {
+    display: none; /* Escondido no desktop */
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* ================== HERO SECTION ================== */
+  .hero {
+    height: 100vh; /* Ocupa a tela toda */
+    position: relative;
+    display: flex; /* Centraliza conteúdo */
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+  }
+  
+  .hero-background {
+    /* Imagem de fundo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre toda a área */
+    z-index: -1; /* Fica atrás do conteúdo */
+    filter: brightness(0.3); /* Escurece */
+  }
+  
+  .hero-content {
+    max-width: 800px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza */
+    padding: 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: fadeInDown 1s ease; /* Animação descendo */
+  }
+  
+  .hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--gold);
+    animation: fadeInDown 1s ease 0.2s; /* Animação com atraso */
+    animation-fill-mode: both; /* Mantém estado final */
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease 0.4s; /* Sobe com atraso */
+    animation-fill-mode: both;
+  }
+  
+  .hero-content .btn {
+    animation: fadeInUp 1s ease 0.6s;
+    animation-fill-mode: both;
+  }
+  
